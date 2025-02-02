@@ -1,6 +1,9 @@
 package JWT.Example.JWT.Example.service;
 
 import JWT.Example.JWT.Example.entities.User;
+import JWT.Example.JWT.Example.repositories.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,7 +13,7 @@ import java.util.UUID;
 @Service
 public class UserService {
 
-    private List<User> store=new ArrayList<>();
+//    private List<User> store=new ArrayList<>();
 
 //    public UserService() {
 //        store.add(new User(UUID.randomUUID().toString(),"MaeinuKhan","khanmaeinuddin19@gmail.com"));
@@ -20,8 +23,21 @@ public class UserService {
 //
 //    }
 
+    @Autowired
+    private UserRepo userRepo;
+
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public List<User> getUsers(){
-        return this.store;
+
+        return userRepo.findAll();
+    }
+
+    public User create(User user){
+        user.setUserId(UUID.randomUUID().toString());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepo.save(user);
     }
 }

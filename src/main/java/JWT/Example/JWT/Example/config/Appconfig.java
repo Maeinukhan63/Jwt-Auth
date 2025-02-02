@@ -15,21 +15,15 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 public class Appconfig {
 
 
-    @Bean
-    public UserDetailsService userDetailsService(){
-        UserDetails user = User.builder()
-                .username("Maeinu")
-                .password(passwordEncoder().encode("abcd"))
-                .roles("ADMIN")
-                .build();
+//    ye method tha ki hm jb inmemory user ko bna rhe the
+//    @Bean
+//    public UserDetailsService userDetailsService(){
+//        UserDetails user = User.builder().username("Maeinu").password(passwordEncoder().encode("abcd")).roles("ADMIN").build();
+//        UserDetails user1 = User.builder().username("Naim").password(passwordEncoder().encode("abcd")).roles("ADMIN").build();
+//        return new InMemoryUserDetailsManager(user,user1);
+//    }
 
-        UserDetails user1 = User.builder()
-                .username("Naim")
-                .password(passwordEncoder().encode("abcd"))
-                .roles("ADMIN")
-                .build();
-        return new InMemoryUserDetailsManager(user,user1);
-    }
+
 
     @Bean
     public PasswordEncoder passwordEncoder(){
