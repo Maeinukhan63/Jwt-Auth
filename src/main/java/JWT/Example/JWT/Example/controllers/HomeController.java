@@ -1,6 +1,6 @@
 package JWT.Example.JWT.Example.controllers;
 
-import JWT.Example.JWT.Example.model.User;
+import JWT.Example.JWT.Example.entities.User;
 import JWT.Example.JWT.Example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
